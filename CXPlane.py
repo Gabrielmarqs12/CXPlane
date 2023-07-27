@@ -35,22 +35,22 @@ def register():					## Read information from info.txt and transfer to process.py
 		msg = info.readlines()
 		prc.start(msg)
 
-	recognition()
+	run()
 pass
 
-def recognition():				## Starts the process of voice recognition
-	print("Inicializing Recognizer...")
-	rec = sr.Recognizer()
-	print("[V] Recognizer Startup Completed !")
-	with sr.Microphone(1) as mic:
-		rec.adjust_for_ambient_noise(mic)
-		print("[V]System Ready... Waiting for your request!")
-		while True:
-			audio = rec.listen(mic)
-			req = rec.recognize_google(audio, language="en-US")
-			ans = prc.recognize(req)
-			sgen.generate(ans)
-		pass
+def run():						## Starts the process of voice recognition
+    freq = input("Select a frequency: ")
+    txt = prc.freq(freq)
+    
+    while True:
+        audio = rec.recognize(mic)
+        req = rec.reconize_google(audio, language = "en-US")
+        code, ans = prc.comm(req)
+        if code == 1:
+            break
+        else
+        sgen.generate(ans)
+    pass
 pass
-	
+
 startup()
